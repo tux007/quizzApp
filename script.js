@@ -89,6 +89,7 @@ function showQuestion() {
     document.getElementById("questionBody").style = 'display: none';
     document.getElementById("amountOfQuestions").innerHTML = questions.length;
     document.getElementById("amountOfRightQuestions").innerHTML = rightQuestions;
+    document.getElementById("header-image").src ='./assets/trophy2.png';
   } else {
     let question = questions[currentQuestion];
 
