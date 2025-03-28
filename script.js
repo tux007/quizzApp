@@ -85,30 +85,42 @@ function init() {
 }
 
 function showQuestion() {
-  if (currentQuestion >= questions.length) {
-    //show end screen
+  if (gameIsOver()) {
+    showEndScreen();
+  } else {
+    updateProgressBar();
+    updateToNextQuestion();
+  }
+}
+
+function gameIsOver() {
+    return currentQuestion >= questions.length;
+}
+
+function updateProgressBar() {
+    let percent =  (currentQuestion + 1) / questions.length;
+    percent = Math.round(percent * 100);
+    document.getElementById("progress-bar").innerHTML = `${percent} %`;
+    document.getElementById("progress-bar").style = `width: ${percent}%`;
+}
+
+function showEndScreen() {
     document.getElementById("endScreen").style = '';
     document.getElementById("questionBody").style = 'display: none';
     document.getElementById("amountOfQuestions").innerHTML = questions.length;
     document.getElementById("amountOfRightQuestions").innerHTML = rightQuestions;
     document.getElementById("header-image").src ='./assets/trophy9.jpg';
-  } else {
-    // show question
+}
 
-    let percent =  (currentQuestion + 1) / questions.length;
-    percent = Math.round(percent * 100);
-    document.getElementById("progress-bar").innerHTML = `${percent} %`;
-    document.getElementById("progress-bar").style = `width: ${percent}%`;
+function updateToNextQuestion() {
     
     let question = questions[currentQuestion];
-
     document.getElementById("question-number").innerHTML = currentQuestion + 1;
     document.getElementById("questiontext").innerHTML = question["question"];
     document.getElementById("answer_1").innerHTML = question["answer_1"];
     document.getElementById("answer_2").innerHTML = question["answer_2"];
     document.getElementById("answer_3").innerHTML = question["answer_3"];
     document.getElementById("answer_4").innerHTML = question["answer_4"];
-  }
 }
 
 function answer(selection) {
