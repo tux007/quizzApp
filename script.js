@@ -76,7 +76,7 @@ let questions = [
 let rightQuestions = 0;
 let currentQuestion = 0;
 let AUDIO_SUCCESS = new Audio("./assets/audio/success.mp3");
-let AUDIO_FAIL = new Audio("./assets/audio/failure.mp3");
+let AUDIO_FAIL = new Audio("./assets/audio/fail.mp3");
 
 function init() {
   document.getElementById("all-questions").innerHTML = questions.length;
