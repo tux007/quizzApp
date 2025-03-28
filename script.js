@@ -73,6 +73,7 @@ let questions = [
   },
 ];
 
+let rightQuestions = 0;
 let currentQuestion = 0;
 
 function init() {
@@ -86,6 +87,8 @@ function showQuestion() {
     //TODO: show end screen
     document.getElementById("endScreen").style = '';
     document.getElementById("questionBody").style = 'display: none';
+    document.getElementById("amountOfQuestions").innerHTML = questions.length;
+    document.getElementById("amountOfRightQuestions").innerHTML = rightQuestions;
   } else {
     let question = questions[currentQuestion];
 
@@ -103,9 +106,10 @@ function answer(selection) {
   let selectedQuestionNumber = selection.slice(-1);
   let idOfRightAnser = `answer_${question["right_answer"]}`;
 
-  if (selectedQuestionNumber == question["right_answer"]) {
+  if (selectedQuestionNumber == question["right_answer"]) { // Richtige Frage beantwortet
     console.log("Correct answer!");
     document.getElementById(selection).parentNode.classList.add("bg-success");
+    rightQuestions++;
   } else {
     console.log("Wrong answer!");
     document.getElementById(selection).parentNode.classList.add("bg-danger");
