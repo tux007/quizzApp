@@ -77,6 +77,7 @@ let rightQuestions = 0;
 let currentQuestion = 0;
 let AUDIO_SUCCESS = new Audio("./assets/audio/success.mp3");
 let AUDIO_FAIL = new Audio("./assets/audio/fail.mp3");
+let AUDIO_DONE = new Audio("./assets/audio/done.mp3");
 
 function init() {
   document.getElementById("all-questions").innerHTML = questions.length;
@@ -105,6 +106,7 @@ function updateProgressBar() {
 }
 
 function showEndScreen() {
+    AUDIO_DONE.play();
     document.getElementById("endScreen").style = '';
     document.getElementById("questionBody").style = 'display: none';
     document.getElementById("amountOfQuestions").innerHTML = questions.length;
